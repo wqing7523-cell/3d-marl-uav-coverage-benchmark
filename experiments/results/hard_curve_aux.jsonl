@@ -1,0 +1,2 @@
+{"method": "qmix", "map_shape": "4x7x7", "num_uavs": 3, "obstacle_density": 0.12, "seed": 0, "coverage_mean": 0.9934826589595375, "coverage_std": 0.01218028086180411, "pa_mean": 0.033783683376572934, "steps_mean": 2330.455, "success_mean": 0.601}
+{"method": "vdn", "map_shape": "4x7x7", "num_uavs": 3, "obstacle_density": 0.12, "seed": 0, "coverage_mean": 0.9726473988439307, "coverage_std": 0.04540835908887821, "pa_mean": 0.027493978677411178, "steps_mean": 2714.2845, "success_mean": 0.411}

@@ -1,0 +1,1 @@
+{"method": "vdn", "map_shape": "3x6x6", "num_uavs": 2, "obstacle_density": 0.08, "seed": 0, "coverage_mean": 0.67595, "coverage_std": 0.1823814615030815, "pa_mean": 0.014827599527980023, "steps_mean": 2435.254, "success_mean": 0.0495}

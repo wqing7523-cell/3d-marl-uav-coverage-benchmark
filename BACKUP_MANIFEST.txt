@@ -1,0 +1,4 @@
+created_utc=2026-05-25T02:43:31Z
+source_repo=C:\Users\44358\Desktop\uav-qmix-3d
+items_copied=35
+missing_optional=(none)

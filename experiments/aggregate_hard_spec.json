@@ -1,0 +1,44 @@
+{
+  "rows": [
+    {
+      "name": "QMIX",
+      "paths": [
+        "experiments/results_eval/qmix_hard_s0.json",
+        "experiments/results_eval/qmix_hard_s1.json",
+        "experiments/results_eval/qmix_hard_s2.json"
+      ]
+    },
+    {
+      "name": "VDN",
+      "paths": [
+        "experiments/results_eval/vdn_hard_s0.json",
+        "experiments/results_eval/vdn_hard_s1.json",
+        "experiments/results_eval/vdn_hard_s2.json"
+      ]
+    },
+    {
+      "name": "Greedy",
+      "paths": [
+        "experiments/results_eval/greedy_hard_s0.json",
+        "experiments/results_eval/greedy_hard_s1.json",
+        "experiments/results_eval/greedy_hard_s2.json"
+      ]
+    },
+    {
+      "name": "Random",
+      "paths": [
+        "experiments/results_eval/random_hard_s0.json",
+        "experiments/results_eval/random_hard_s1.json",
+        "experiments/results_eval/random_hard_s2.json"
+      ]
+    },
+    {
+      "name": "MAPPO",
+      "paths": [
+        "experiments/results_eval/mappo_hard_s0.json",
+        "experiments/results_eval/mappo_hard_s1.json",
+        "experiments/results_eval/mappo_hard_s2.json"
+      ]
+    }
+  ]
+}

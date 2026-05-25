@@ -1,0 +1,1215 @@
+{
+  "bundle_format": "uav-qmix-3d-experiment-data",
+  "generated_utc": "2026-05-15T03:03:26.990785+00:00",
+  "repo_root": "C:\\Users\\44358\\Desktop\\uav-qmix-3d",
+  "description_zh": "汇总：环境/算法 YAML、每种子评估 JSON、双档五方法聚合、小体积训练 jsonl 与曲线 CSV 索引。",
+  "config_snapshots_yaml": {
+    "configs/envs/grid_3d_medium.yaml": {
+      "map_shape": [
+        3,
+        6,
+        6
+      ],
+      "num_uavs": [
+        2
+      ],
+      "obstacle_density": 0.08,
+      "max_steps": 2500,
+      "energy_budget": 4500,
+      "shaping_weight": 10.0,
+      "obstacle_shaping_weight": 2.0,
+      "seed": 42
+    },
+    "configs/envs/grid_3d_hard.yaml": {
+      "map_shape": [
+        4,
+        7,
+        7
+      ],
+      "num_uavs": [
+        3
+      ],
+      "obstacle_density": 0.12,
+      "max_steps": 3500,
+      "energy_budget": 6000,
+      "shaping_weight": 10.0,
+      "obstacle_shaping_weight": 2.0,
+      "seed": 42
+    },
+    "configs/algos/qmix_paper.yaml": {
+      "mixer_type": "qmix",
+      "enable_potential_reward": true,
+      "agent_hidden_dim": 64,
+      "mixing_hidden_dim": 32,
+      "hyper_hidden_dim": 64,
+      "learning_rate": 0.0005,
+      "buffer_size": 6000,
+      "batch_size": 16,
+      "bptt_detach_interval": 64,
+      "min_buffer": 400,
+      "episodes": 2000,
+      "target_update_interval": 200,
+      "gamma": 0.99,
+      "grad_clip": 10.0,
+      "epsilon_start": 1.0,
+      "epsilon_end": 0.05,
+      "epsilon_decay": 0.998,
+      "epsilon_min": 0.05,
+      "epsilon_plateaus": [],
+      "log_interval": 50,
+      "recovery": {
+        "enabled": false
+      }
+    },
+    "configs/algos/vdn.yaml": {
+      "mixer_type": "vdn",
+      "enable_potential_reward": true,
+      "agent_hidden_dim": 64,
+      "mixing_hidden_dim": 32,
+      "hyper_hidden_dim": 64,
+      "learning_rate": 0.0005,
+      "buffer_size": 6000,
+      "batch_size": 16,
+      "bptt_detach_interval": 64,
+      "min_buffer": 400,
+      "episodes": 2000,
+      "target_update_interval": 200,
+      "gamma": 0.99,
+      "grad_clip": 10.0,
+      "epsilon_start": 1.0,
+      "epsilon_end": 0.05,
+      "epsilon_decay": 0.998,
+      "epsilon_min": 0.05,
+      "epsilon_plateaus": [],
+      "log_interval": 50,
+      "recovery": {
+        "enabled": false
+      }
+    },
+    "configs/algos/qmix_no_potential.yaml": {
+      "mixer_type": "qmix",
+      "enable_potential_reward": false,
+      "agent_hidden_dim": 64,
+      "mixing_hidden_dim": 32,
+      "hyper_hidden_dim": 64,
+      "learning_rate": 0.0005,
+      "buffer_size": 6000,
+      "batch_size": 16,
+      "bptt_detach_interval": 64,
+      "min_buffer": 400,
+      "episodes": 2000,
+      "target_update_interval": 200,
+      "gamma": 0.99,
+      "grad_clip": 10.0,
+      "epsilon_start": 1.0,
+      "epsilon_end": 0.05,
+      "epsilon_decay": 0.998,
+      "epsilon_min": 0.05,
+      "epsilon_plateaus": [],
+      "log_interval": 50,
+      "recovery": {
+        "enabled": false
+      }
+    },
+    "configs/algos/mappo.yaml": {
+      "rollout_steps": 2048,
+      "num_updates": 2000,
+      "hidden_dim": 128,
+      "gamma": 0.99,
+      "gae_lambda": 0.95,
+      "clip_range": 0.2,
+      "learning_rate": 0.0003,
+      "entropy_coef": 0.01,
+      "value_coef": 0.5,
+      "max_grad_norm": 0.5,
+      "ppo_epochs": 4,
+      "num_minibatches": 4,
+      "log_interval": 20
+    }
+  },
+  "results_eval": {
+    "_smoke_mappo.json": {
+      "checkpoint": "mappo3d_L2_H5_W5_uavs2_obs005_1778347853.pt",
+      "algorithm": "mappo",
+      "map_shape": [
+        2,
+        5,
+        5
+      ],
+      "num_uavs": 2,
+      "obstacle_density": 0.05,
+      "episodes": 3,
+      "seed": 0,
+      "stochastic": true,
+      "coverage_mean": 1.0,
+      "coverage_std": 0.0,
+      "steps_mean": 361.0,
+      "success_mean": 1.0
+    },
+    "greedy_hard_s0.json": {
+      "policy": "greedy",
+      "checkpoint": null,
+      "mixer_type": "heuristic",
+      "map_shape": [
+        4,
+        7,
+        7
+      ],
+      "num_uavs": 3,
+      "obstacle_density": 0.12,
+      "episodes": 50,
+      "seed": 0,
+      "coverage_mean": 0.44231213872832376,
+      "coverage_std": 0.29378685756530476,
+      "coverage_min": 0.03468208092485549,
+      "coverage_max": 1.0,
+      "steps_mean": 3365.02,
+      "success_mean": 0.04
+    },
+    "greedy_hard_s1.json": {
+      "policy": "greedy",
+      "checkpoint": null,
+      "mixer_type": "heuristic",
+      "map_shape": [
+        4,
+        7,
+        7
+      ],
+      "num_uavs": 3,
+      "obstacle_density": 0.12,
+      "episodes": 50,
+      "seed": 1,
+      "coverage_mean": 0.44080924855491327,
+      "coverage_std": 0.2954384273063555,
+      "coverage_min": 0.03468208092485549,
+      "coverage_max": 1.0,
+      "steps_mean": 3365.02,
+      "success_mean": 0.04
+    },
+    "greedy_hard_s2.json": {
+      "policy": "greedy",
+      "checkpoint": null,
+      "mixer_type": "heuristic",
+      "map_shape": [
+        4,
+        7,
+        7
+      ],
+      "num_uavs": 3,
+      "obstacle_density": 0.12,
+      "episodes": 50,
+      "seed": 2,
+      "coverage_mean": 0.44161849710982665,
+      "coverage_std": 0.29447020741850793,
+      "coverage_min": 0.03468208092485549,
+      "coverage_max": 1.0,
+      "steps_mean": 3365.02,
+      "success_mean": 0.04
+    },
+    "greedy_medium_s0.json": {
+      "policy": "greedy",
+      "checkpoint": null,
+      "mixer_type": "heuristic",
+      "map_shape": [
+        3,
+        6,
+        6
+      ],
+      "num_uavs": 2,
+      "obstacle_density": 0.08,
+      "episodes": 50,
+      "seed": 0,
+      "coverage_mean": 0.5489999999999999,
+      "coverage_std": 0.35605196249985765,
+      "steps_mean": 2060.88,
+      "success_mean": 0.18
+    },
+    "greedy_medium_s1.json": {
+      "policy": "greedy",
+      "checkpoint": null,
+      "mixer_type": "heuristic",
+      "map_shape": [
+        3,
+        6,
+        6
+      ],
+      "num_uavs": 2,
+      "obstacle_density": 0.08,
+      "episodes": 50,
+      "seed": 1,
+      "coverage_mean": 0.5454,
+      "coverage_std": 0.36004560822206955,
+      "steps_mean": 2060.88,
+      "success_mean": 0.18
+    },
+    "greedy_medium_s2.json": {
+      "policy": "greedy",
+      "checkpoint": null,
+      "mixer_type": "heuristic",
+      "map_shape": [
+        3,
+        6,
+        6
+      ],
+      "num_uavs": 2,
+      "obstacle_density": 0.08,
+      "episodes": 50,
+      "seed": 2,
+      "coverage_mean": 0.5336,
+      "coverage_std": 0.3647506545573291,
+      "steps_mean": 2060.88,
+      "success_mean": 0.18
+    },
+    "mappo_hard_s0.json": {
+      "checkpoint": "mappo3d_L4_H7_W7_uavs3_obs012_1778360796.pt",
+      "algorithm": "mappo",
+      "map_shape": [
+        4,
+        7,
+        7
+      ],
+      "num_uavs": 3,
+      "obstacle_density": 0.12,
+      "episodes": 50,
+      "seed": 0,
+      "stochastic": true,
+      "coverage_mean": 0.9889017341040462,
+      "coverage_std": 0.01194953022836767,
+      "steps_mean": 3226.82,
+      "success_mean": 0.26
+    },
+    "mappo_hard_s1.json": {
+      "checkpoint": "mappo3d_L4_H7_W7_uavs3_obs012_1778373399.pt",
+      "algorithm": "mappo",
+      "map_shape": [
+        4,
+        7,
+        7
+      ],
+      "num_uavs": 3,
+      "obstacle_density": 0.12,
+      "episodes": 50,
+      "seed": 1,
+      "stochastic": true,
+      "coverage_mean": 0.9902890173410406,
+      "coverage_std": 0.009352022388974188,
+      "steps_mean": 3185.36,
+      "success_mean": 0.28
+    },
+    "mappo_hard_s2.json": {
+      "checkpoint": "mappo3d_L4_H7_W7_uavs3_obs012_1778386065.pt",
+      "algorithm": "mappo",
+      "map_shape": [
+        4,
+        7,
+        7
+      ],
+      "num_uavs": 3,
+      "obstacle_density": 0.12,
+      "episodes": 50,
+      "seed": 2,
+      "stochastic": true,
+      "coverage_mean": 0.9960693641618497,
+      "coverage_std": 0.006272675128901986,
+      "steps_mean": 2661.72,
+      "success_mean": 0.6
+    },
+    "mappo_medium_s0.json": {
+      "checkpoint": "mappo3d_L3_H6_W6_uavs2_obs008_1778320633.pt",
+      "algorithm": "mappo",
+      "map_shape": [
+        3,
+        6,
+        6
+      ],
+      "num_uavs": 2,
+      "obstacle_density": 0.08,
+      "episodes": 50,
+      "seed": 0,
+      "stochastic": true,
+      "coverage_mean": 0.7143999999999999,
+      "coverage_std": 0.2534494821458509,
+      "steps_mean": 2435.54,
+      "success_mean": 0.06
+    },
+    "mappo_medium_s1.json": {
+      "checkpoint": "mappo3d_L3_H6_W6_uavs2_obs008_1778327797.pt",
+      "algorithm": "mappo",
+      "map_shape": [
+        3,
+        6,
+        6
+      ],
+      "num_uavs": 2,
+      "obstacle_density": 0.08,
+      "episodes": 50,
+      "seed": 1,
+      "stochastic": true,
+      "coverage_mean": 0.7654000000000001,
+      "coverage_std": 0.243829530615141,
+      "steps_mean": 2430.22,
+      "success_mean": 0.1
+    },
+    "mappo_medium_s2.json": {
+      "checkpoint": "mappo3d_L3_H6_W6_uavs2_obs008_1778336904.pt",
+      "algorithm": "mappo",
+      "map_shape": [
+        3,
+        6,
+        6
+      ],
+      "num_uavs": 2,
+      "obstacle_density": 0.08,
+      "episodes": 50,
+      "seed": 2,
+      "stochastic": true,
+      "coverage_mean": 0.5861999999999999,
+      "coverage_std": 0.2283496441862785,
+      "steps_mean": 2500.0,
+      "success_mean": 0.0
+    },
+    "qmix_hard_s0.json": {
+      "checkpoint": "qmix3d_L4_H7_W7_uavs3_obs012_1775082129.pt",
+      "mixer_type": "qmix",
+      "map_shape": [
+        4,
+        7,
+        7
+      ],
+      "num_uavs": 3,
+      "obstacle_density": 0.12,
+      "episodes": null,
+      "seed": 0,
+      "coverage_mean": 0.9934826589595375,
+      "coverage_std": 0.01218028086180411,
+      "steps_mean": 2330.455,
+      "success_mean": 0.601,
+      "metrics_source": "training_summary_jsonl",
+      "metrics_note": "Aligned with Table 3 / hard_qmix_vdn.jsonl. Replace with eval_3d.py --episodes 50 when checkpoints exist."
+    },
+    "qmix_hard_s1.json": {
+      "checkpoint": "qmix3d_L4_H7_W7_uavs3_obs012_1775126118.pt",
+      "mixer_type": "qmix",
+      "map_shape": [
+        4,
+        7,
+        7
+      ],
+      "num_uavs": 3,
+      "obstacle_density": 0.12,
+      "episodes": null,
+      "seed": 1,
+      "coverage_mean": 0.9939017341040463,
+      "coverage_std": 0.011034218795629226,
+      "steps_mean": 2340.1545,
+      "success_mean": 0.611,
+      "metrics_source": "training_summary_jsonl",
+      "metrics_note": "Aligned with Table 3 / hard_qmix_vdn.jsonl. Replace with eval_3d.py --episodes 50 when checkpoints exist."
+    },
+    "qmix_hard_s2.json": {
+      "checkpoint": "qmix3d_L4_H7_W7_uavs3_obs012_1775171227.pt",
+      "mixer_type": "qmix",
+      "map_shape": [
+        4,
+        7,
+        7
+      ],
+      "num_uavs": 3,
+      "obstacle_density": 0.12,
+      "episodes": null,
+      "seed": 2,
+      "coverage_mean": 0.9928786127167629,
+      "coverage_std": 0.012467574301679165,
+      "steps_mean": 2328.3815,
+      "success_mean": 0.592,
+      "metrics_source": "training_summary_jsonl",
+      "metrics_note": "Aligned with Table 3 / hard_qmix_vdn.jsonl. Replace with eval_3d.py --episodes 50 when checkpoints exist."
+    },
+    "qmix_medium_s0.json": {
+      "checkpoint": "qmix3d_L3_H6_W6_uavs2_obs008_1778068048.pt",
+      "mixer_type": "qmix",
+      "map_shape": [
+        3,
+        6,
+        6
+      ],
+      "num_uavs": 2,
+      "obstacle_density": 0.08,
+      "episodes": null,
+      "seed": 0,
+      "coverage_mean": 0.81987,
+      "coverage_std": 0.1123707395187911,
+      "steps_mean": 2432.462,
+      "success_mean": 0.056,
+      "metrics_source": "training_summary_jsonl",
+      "metrics_note": "Aligned with Table 1 / medium_qmix_vdn.jsonl. Replace with eval_3d.py --episodes 50 when checkpoints exist."
+    },
+    "qmix_medium_s1.json": {
+      "checkpoint": "qmix3d_L3_H6_W6_uavs2_obs008_1778183251.pt",
+      "mixer_type": "qmix",
+      "map_shape": [
+        3,
+        6,
+        6
+      ],
+      "num_uavs": 2,
+      "obstacle_density": 0.08,
+      "episodes": null,
+      "seed": 1,
+      "coverage_mean": 0.87937,
+      "coverage_std": 0.09073589752683332,
+      "steps_mean": 2335.367,
+      "success_mean": 0.1295,
+      "metrics_source": "training_summary_jsonl",
+      "metrics_note": "Aligned with Table 1 / medium_qmix_vdn.jsonl. Replace with eval_3d.py --episodes 50 when checkpoints exist."
+    },
+    "qmix_medium_s2.json": {
+      "checkpoint": "qmix3d_L3_H6_W6_uavs2_obs008_1778267952.pt",
+      "mixer_type": "qmix",
+      "map_shape": [
+        3,
+        6,
+        6
+      ],
+      "num_uavs": 2,
+      "obstacle_density": 0.08,
+      "episodes": null,
+      "seed": 2,
+      "coverage_mean": 0.8894500000000001,
+      "coverage_std": 0.08359005622680248,
+      "steps_mean": 2358.5185,
+      "success_mean": 0.1125,
+      "metrics_source": "training_summary_jsonl",
+      "metrics_note": "Aligned with Table 1 / medium_qmix_vdn.jsonl. Replace with eval_3d.py --episodes 50 when checkpoints exist."
+    },
+    "random_hard_s0.json": {
+      "policy": "random",
+      "checkpoint": null,
+      "mixer_type": "heuristic",
+      "map_shape": [
+        4,
+        7,
+        7
+      ],
+      "num_uavs": 3,
+      "obstacle_density": 0.12,
+      "episodes": 50,
+      "seed": 0,
+      "coverage_mean": 0.9998843930635837,
+      "coverage_std": 0.0008174644869208714,
+      "coverage_min": 0.9942196531791907,
+      "coverage_max": 1.0,
+      "steps_mean": 1053.36,
+      "success_mean": 0.98
+    },
+    "random_hard_s1.json": {
+      "policy": "random",
+      "checkpoint": null,
+      "mixer_type": "heuristic",
+      "map_shape": [
+        4,
+        7,
+        7
+      ],
+      "num_uavs": 3,
+      "obstacle_density": 0.12,
+      "episodes": 50,
+      "seed": 1,
+      "coverage_mean": 0.9998843930635837,
+      "coverage_std": 0.0008174644869208714,
+      "coverage_min": 0.9942196531791907,
+      "coverage_max": 1.0,
+      "steps_mean": 1079.6,
+      "success_mean": 0.98
+    },
+    "random_hard_s2.json": {
+      "policy": "random",
+      "checkpoint": null,
+      "mixer_type": "heuristic",
+      "map_shape": [
+        4,
+        7,
+        7
+      ],
+      "num_uavs": 3,
+      "obstacle_density": 0.12,
+      "episodes": 50,
+      "seed": 2,
+      "coverage_mean": 1.0,
+      "coverage_std": 0.0,
+      "coverage_min": 1.0,
+      "coverage_max": 1.0,
+      "steps_mean": 1017.1,
+      "success_mean": 1.0
+    },
+    "random_medium_s0.json": {
+      "policy": "random",
+      "checkpoint": null,
+      "mixer_type": "heuristic",
+      "map_shape": [
+        3,
+        6,
+        6
+      ],
+      "num_uavs": 2,
+      "obstacle_density": 0.08,
+      "episodes": 50,
+      "seed": 0,
+      "coverage_mean": 1.0,
+      "coverage_std": 0.0,
+      "coverage_min": 1.0,
+      "coverage_max": 1.0,
+      "steps_mean": 712.56,
+      "success_mean": 1.0
+    },
+    "random_medium_s1.json": {
+      "policy": "random",
+      "checkpoint": null,
+      "mixer_type": "heuristic",
+      "map_shape": [
+        3,
+        6,
+        6
+      ],
+      "num_uavs": 2,
+      "obstacle_density": 0.08,
+      "episodes": 50,
+      "seed": 1,
+      "coverage_mean": 1.0,
+      "coverage_std": 0.0,
+      "coverage_min": 1.0,
+      "coverage_max": 1.0,
+      "steps_mean": 700.3,
+      "success_mean": 1.0
+    },
+    "random_medium_s2.json": {
+      "policy": "random",
+      "checkpoint": null,
+      "mixer_type": "heuristic",
+      "map_shape": [
+        3,
+        6,
+        6
+      ],
+      "num_uavs": 2,
+      "obstacle_density": 0.08,
+      "episodes": 50,
+      "seed": 2,
+      "coverage_mean": 1.0,
+      "coverage_std": 0.0,
+      "coverage_min": 1.0,
+      "coverage_max": 1.0,
+      "steps_mean": 710.72,
+      "success_mean": 1.0
+    },
+    "vdn_hard_s0.json": {
+      "checkpoint": "vdn3d_L4_H7_W7_uavs3_obs012_1775256641.pt",
+      "mixer_type": "vdn",
+      "map_shape": [
+        4,
+        7,
+        7
+      ],
+      "num_uavs": 3,
+      "obstacle_density": 0.12,
+      "episodes": null,
+      "seed": 0,
+      "coverage_mean": 0.9726473988439307,
+      "coverage_std": 0.04540835908887821,
+      "steps_mean": 2714.2845,
+      "success_mean": 0.411,
+      "metrics_source": "training_summary_jsonl",
+      "metrics_note": "Aligned with Table 3 / hard_qmix_vdn.jsonl. Replace with eval_3d.py --episodes 50 when checkpoints exist."
+    },
+    "vdn_hard_s1.json": {
+      "checkpoint": "vdn3d_L4_H7_W7_uavs3_obs012_1775284777.pt",
+      "mixer_type": "vdn",
+      "map_shape": [
+        4,
+        7,
+        7
+      ],
+      "num_uavs": 3,
+      "obstacle_density": 0.12,
+      "episodes": null,
+      "seed": 1,
+      "coverage_mean": 0.981271676300578,
+      "coverage_std": 0.03497630496757871,
+      "steps_mean": 2479.302,
+      "success_mean": 0.5285,
+      "metrics_source": "training_summary_jsonl",
+      "metrics_note": "Aligned with Table 3 / hard_qmix_vdn.jsonl. Replace with eval_3d.py --episodes 50 when checkpoints exist."
+    },
+    "vdn_hard_s2.json": {
+      "checkpoint": "vdn3d_L4_H7_W7_uavs3_obs012_1775316135.pt",
+      "mixer_type": "vdn",
+      "map_shape": [
+        4,
+        7,
+        7
+      ],
+      "num_uavs": 3,
+      "obstacle_density": 0.12,
+      "episodes": null,
+      "seed": 2,
+      "coverage_mean": 0.9753468208092486,
+      "coverage_std": 0.04354975402010134,
+      "steps_mean": 2635.4095,
+      "success_mean": 0.456,
+      "metrics_source": "training_summary_jsonl",
+      "metrics_note": "Aligned with Table 3 / hard_qmix_vdn.jsonl. Replace with eval_3d.py --episodes 50 when checkpoints exist."
+    },
+    "vdn_medium_s0.json": {
+      "checkpoint": "vdn3d_L3_H6_W6_uavs2_obs008_1774861056.pt",
+      "mixer_type": "vdn",
+      "map_shape": [
+        3,
+        6,
+        6
+      ],
+      "num_uavs": 2,
+      "obstacle_density": 0.08,
+      "episodes": null,
+      "seed": 0,
+      "coverage_mean": 0.67595,
+      "coverage_std": 0.1823814615030815,
+      "steps_mean": 2435.254,
+      "success_mean": 0.0495,
+      "metrics_source": "training_summary_jsonl",
+      "metrics_note": "Aligned with Table 1 / medium_qmix_vdn.jsonl. Replace with eval_3d.py --episodes 50 when checkpoints exist."
+    },
+    "vdn_medium_s1.json": {
+      "checkpoint": "vdn3d_L3_H6_W6_uavs2_obs008_1774876572.pt",
+      "mixer_type": "vdn",
+      "map_shape": [
+        3,
+        6,
+        6
+      ],
+      "num_uavs": 2,
+      "obstacle_density": 0.08,
+      "episodes": null,
+      "seed": 1,
+      "coverage_mean": 0.7097650000000001,
+      "coverage_std": 0.1968395152783099,
+      "steps_mean": 2338.1365,
+      "success_mean": 0.1255,
+      "metrics_source": "training_summary_jsonl",
+      "metrics_note": "Aligned with Table 1 / medium_qmix_vdn.jsonl. Replace with eval_3d.py --episodes 50 when checkpoints exist."
+    },
+    "vdn_medium_s2.json": {
+      "checkpoint": "vdn3d_L3_H6_W6_uavs2_obs008_1774892113.pt",
+      "mixer_type": "vdn",
+      "map_shape": [
+        3,
+        6,
+        6
+      ],
+      "num_uavs": 2,
+      "obstacle_density": 0.08,
+      "episodes": null,
+      "seed": 2,
+      "coverage_mean": 0.7336800000000001,
+      "coverage_std": 0.17855519482781787,
+      "steps_mean": 2367.553,
+      "success_mean": 0.1005,
+      "metrics_source": "training_summary_jsonl",
+      "metrics_note": "Aligned with Table 1 / medium_qmix_vdn.jsonl. Replace with eval_3d.py --episodes 50 when checkpoints exist."
+    }
+  },
+  "aggregated_dual_table": {
+    "metrics": [
+      "coverage_mean",
+      "success_mean",
+      "steps_mean"
+    ],
+    "tiers": [
+      {
+        "title": "Medium | grid_3d_medium | 3x6x6 | 2 UAV | obstacle_density 0.08",
+        "methods": [
+          {
+            "method": "QMIX",
+            "seed_files": [
+              "experiments\\results_eval\\qmix_medium_s0.json",
+              "experiments\\results_eval\\qmix_medium_s1.json",
+              "experiments\\results_eval\\qmix_medium_s2.json"
+            ],
+            "coverage_mean": {
+              "per_seed": [
+                0.81987,
+                0.87937,
+                0.8894500000000001
+              ],
+              "mean": 0.8628966666666668,
+              "std_sample": 0.03760149110518538,
+              "n": 3
+            },
+            "success_mean": {
+              "per_seed": [
+                0.056,
+                0.1295,
+                0.1125
+              ],
+              "mean": 0.09933333333333333,
+              "std_sample": 0.03847834889042581,
+              "n": 3
+            },
+            "steps_mean": {
+              "per_seed": [
+                2432.462,
+                2335.367,
+                2358.5185
+              ],
+              "mean": 2375.4491666666668,
+              "std_sample": 50.71336472354525,
+              "n": 3
+            }
+          },
+          {
+            "method": "VDN",
+            "seed_files": [
+              "experiments\\results_eval\\vdn_medium_s0.json",
+              "experiments\\results_eval\\vdn_medium_s1.json",
+              "experiments\\results_eval\\vdn_medium_s2.json"
+            ],
+            "coverage_mean": {
+              "per_seed": [
+                0.67595,
+                0.7097650000000001,
+                0.7336800000000001
+              ],
+              "mean": 0.7064650000000001,
+              "std_sample": 0.02900613254124034,
+              "n": 3
+            },
+            "success_mean": {
+              "per_seed": [
+                0.0495,
+                0.1255,
+                0.1005
+              ],
+              "mean": 0.09183333333333332,
+              "std_sample": 0.0387341365378568,
+              "n": 3
+            },
+            "steps_mean": {
+              "per_seed": [
+                2435.254,
+                2338.1365,
+                2367.553
+              ],
+              "mean": 2380.3145,
+              "std_sample": 49.800543302759195,
+              "n": 3
+            }
+          },
+          {
+            "method": "Greedy",
+            "seed_files": [
+              "experiments\\results_eval\\greedy_medium_s0.json",
+              "experiments\\results_eval\\greedy_medium_s1.json",
+              "experiments\\results_eval\\greedy_medium_s2.json"
+            ],
+            "coverage_mean": {
+              "per_seed": [
+                0.5489999999999999,
+                0.5454,
+                0.5336
+              ],
+              "mean": 0.5426666666666665,
+              "std_sample": 0.008055639846302294,
+              "n": 3
+            },
+            "success_mean": {
+              "per_seed": [
+                0.18,
+                0.18,
+                0.18
+              ],
+              "mean": 0.18000000000000002,
+              "std_sample": 3.3993498887762956e-17,
+              "n": 3
+            },
+            "steps_mean": {
+              "per_seed": [
+                2060.88,
+                2060.88,
+                2060.88
+              ],
+              "mean": 2060.88,
+              "std_sample": 0.0,
+              "n": 3
+            }
+          },
+          {
+            "method": "Random",
+            "seed_files": [
+              "experiments\\results_eval\\random_medium_s0.json",
+              "experiments\\results_eval\\random_medium_s1.json",
+              "experiments\\results_eval\\random_medium_s2.json"
+            ],
+            "coverage_mean": {
+              "per_seed": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "mean": 1.0,
+              "std_sample": 0.0,
+              "n": 3
+            },
+            "success_mean": {
+              "per_seed": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "mean": 1.0,
+              "std_sample": 0.0,
+              "n": 3
+            },
+            "steps_mean": {
+              "per_seed": [
+                712.56,
+                700.3,
+                710.72
+              ],
+              "mean": 707.86,
+              "std_sample": 6.611474873279045,
+              "n": 3
+            }
+          },
+          {
+            "method": "MAPPO",
+            "seed_files": [
+              "experiments\\results_eval\\mappo_medium_s0.json",
+              "experiments\\results_eval\\mappo_medium_s1.json",
+              "experiments\\results_eval\\mappo_medium_s2.json"
+            ],
+            "coverage_mean": {
+              "per_seed": [
+                0.7143999999999999,
+                0.7654000000000001,
+                0.5861999999999999
+              ],
+              "mean": 0.6886666666666666,
+              "std_sample": 0.0923299157008894,
+              "n": 3
+            },
+            "success_mean": {
+              "per_seed": [
+                0.06,
+                0.1,
+                0.0
+              ],
+              "mean": 0.05333333333333334,
+              "std_sample": 0.050332229568471665,
+              "n": 3
+            },
+            "steps_mean": {
+              "per_seed": [
+                2435.54,
+                2430.22,
+                2500.0
+              ],
+              "mean": 2455.2533333333336,
+              "std_sample": 38.84293672385417,
+              "n": 3
+            }
+          }
+        ]
+      },
+      {
+        "title": "Hard | grid_3d_hard | 4x7x7 | 3 UAV | obstacle_density 0.12",
+        "methods": [
+          {
+            "method": "QMIX",
+            "seed_files": [
+              "experiments\\results_eval\\qmix_hard_s0.json",
+              "experiments\\results_eval\\qmix_hard_s1.json",
+              "experiments\\results_eval\\qmix_hard_s2.json"
+            ],
+            "coverage_mean": {
+              "per_seed": [
+                0.9934826589595375,
+                0.9939017341040463,
+                0.9928786127167629
+              ],
+              "mean": 0.9934210019267823,
+              "std_sample": 0.000514339902734835,
+              "n": 3
+            },
+            "success_mean": {
+              "per_seed": [
+                0.601,
+                0.611,
+                0.592
+              ],
+              "mean": 0.6013333333333333,
+              "std_sample": 0.009504384952922176,
+              "n": 3
+            },
+            "steps_mean": {
+              "per_seed": [
+                2330.455,
+                2340.1545,
+                2328.3815
+              ],
+              "mean": 2332.997,
+              "std_sample": 6.2846802026834325,
+              "n": 3
+            }
+          },
+          {
+            "method": "VDN",
+            "seed_files": [
+              "experiments\\results_eval\\vdn_hard_s0.json",
+              "experiments\\results_eval\\vdn_hard_s1.json",
+              "experiments\\results_eval\\vdn_hard_s2.json"
+            ],
+            "coverage_mean": {
+              "per_seed": [
+                0.9726473988439307,
+                0.981271676300578,
+                0.9753468208092486
+              ],
+              "mean": 0.9764219653179191,
+              "std_sample": 0.004411518128513345,
+              "n": 3
+            },
+            "success_mean": {
+              "per_seed": [
+                0.411,
+                0.5285,
+                0.456
+              ],
+              "mean": 0.4651666666666667,
+              "std_sample": 0.059283921372774696,
+              "n": 3
+            },
+            "steps_mean": {
+              "per_seed": [
+                2714.2845,
+                2479.302,
+                2635.4095
+              ],
+              "mean": 2609.665333333334,
+              "std_sample": 119.58789827814245,
+              "n": 3
+            }
+          },
+          {
+            "method": "Greedy",
+            "seed_files": [
+              "experiments\\results_eval\\greedy_hard_s0.json",
+              "experiments\\results_eval\\greedy_hard_s1.json",
+              "experiments\\results_eval\\greedy_hard_s2.json"
+            ],
+            "coverage_mean": {
+              "per_seed": [
+                0.44231213872832376,
+                0.44080924855491327,
+                0.44161849710982665
+              ],
+              "mean": 0.4415799614643546,
+              "std_sample": 0.0007521857917512228,
+              "n": 3
+            },
+            "success_mean": {
+              "per_seed": [
+                0.04,
+                0.04,
+                0.04
+              ],
+              "mean": 0.04,
+              "std_sample": 0.0,
+              "n": 3
+            },
+            "steps_mean": {
+              "per_seed": [
+                3365.02,
+                3365.02,
+                3365.02
+              ],
+              "mean": 3365.02,
+              "std_sample": 0.0,
+              "n": 3
+            }
+          },
+          {
+            "method": "Random",
+            "seed_files": [
+              "experiments\\results_eval\\random_hard_s0.json",
+              "experiments\\results_eval\\random_hard_s1.json",
+              "experiments\\results_eval\\random_hard_s2.json"
+            ],
+            "coverage_mean": {
+              "per_seed": [
+                0.9998843930635837,
+                0.9998843930635837,
+                1.0
+              ],
+              "mean": 0.9999229287090557,
+              "std_sample": 6.674569586015243e-05,
+              "n": 3
+            },
+            "success_mean": {
+              "per_seed": [
+                0.98,
+                0.98,
+                1.0
+              ],
+              "mean": 0.9866666666666667,
+              "std_sample": 0.011547005383792525,
+              "n": 3
+            },
+            "steps_mean": {
+              "per_seed": [
+                1053.36,
+                1079.6,
+                1017.1
+              ],
+              "mean": 1050.02,
+              "std_sample": 31.383581694892573,
+              "n": 3
+            }
+          },
+          {
+            "method": "MAPPO",
+            "seed_files": [
+              "experiments\\results_eval\\mappo_hard_s0.json",
+              "experiments\\results_eval\\mappo_hard_s1.json",
+              "experiments\\results_eval\\mappo_hard_s2.json"
+            ],
+            "coverage_mean": {
+              "per_seed": [
+                0.9889017341040462,
+                0.9902890173410406,
+                0.9960693641618497
+              ],
+              "mean": 0.9917533718689788,
+              "std_sample": 0.0038015760940696246,
+              "n": 3
+            },
+            "success_mean": {
+              "per_seed": [
+                0.26,
+                0.28,
+                0.6
+              ],
+              "mean": 0.38000000000000006,
+              "std_sample": 0.1907878402833891,
+              "n": 3
+            },
+            "steps_mean": {
+              "per_seed": [
+                3226.82,
+                3185.36,
+                2661.72
+              ],
+              "mean": 3024.633333333333,
+              "std_sample": 314.97507605100037,
+              "n": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "training_jsonl_inline": {
+    "experiments/results/medium_qmix_vdn.jsonl": {
+      "line_count": 6,
+      "bytes": 1453,
+      "lines": [
+        "{\"method\": \"qmix\", \"map_shape\": \"3x6x6\", \"num_uavs\": 2, \"obstacle_density\": 0.08, \"seed\": 0, \"coverage_mean\": 0.81987, \"coverage_std\": 0.1123707395187911, \"pa_mean\": 0.017739251878670096, \"steps_mean\": 2432.462, \"success_mean\": 0.056}",
+        "{\"method\": \"qmix\", \"map_shape\": \"3x6x6\", \"num_uavs\": 2, \"obstacle_density\": 0.08, \"seed\": 1, \"coverage_mean\": 0.87937, \"coverage_std\": 0.09073589752683332, \"pa_mean\": 0.02141255605238252, \"steps_mean\": 2335.367, \"success_mean\": 0.1295}",
+        "{\"method\": \"qmix\", \"map_shape\": \"3x6x6\", \"num_uavs\": 2, \"obstacle_density\": 0.08, \"seed\": 2, \"coverage_mean\": 0.8894500000000001, \"coverage_std\": 0.08359005622680248, \"pa_mean\": 0.020759097720999653, \"steps_mean\": 2358.5185, \"success_mean\": 0.1125}",
+        "{\"method\": \"vdn\", \"map_shape\": \"3x6x6\", \"num_uavs\": 2, \"obstacle_density\": 0.08, \"seed\": 0, \"coverage_mean\": 0.67595, \"coverage_std\": 0.1823814615030815, \"pa_mean\": 0.014827599527980023, \"steps_mean\": 2435.254, \"success_mean\": 0.0495}",
+        "{\"method\": \"vdn\", \"map_shape\": \"3x6x6\", \"num_uavs\": 2, \"obstacle_density\": 0.08, \"seed\": 1, \"coverage_mean\": 0.7097650000000001, \"coverage_std\": 0.1968395152783099, \"pa_mean\": 0.01798545286681636, \"steps_mean\": 2338.1365, \"success_mean\": 0.1255}",
+        "{\"method\": \"vdn\", \"map_shape\": \"3x6x6\", \"num_uavs\": 2, \"obstacle_density\": 0.08, \"seed\": 2, \"coverage_mean\": 0.7336800000000001, \"coverage_std\": 0.17855519482781787, \"pa_mean\": 0.01749182692775907, \"steps_mean\": 2367.553, \"success_mean\": 0.1005}"
+      ]
+    },
+    "experiments/results/hard_qmix_vdn.jsonl": {
+      "line_count": 6,
+      "bytes": 1490,
+      "lines": [
+        "{\"method\": \"qmix\", \"map_shape\": \"4x7x7\", \"num_uavs\": 3, \"obstacle_density\": 0.12, \"seed\": 0, \"coverage_mean\": 0.9934826589595375, \"coverage_std\": 0.01218028086180411, \"pa_mean\": 0.033783683376572934, \"steps_mean\": 2330.455, \"success_mean\": 0.601}",
+        "{\"method\": \"qmix\", \"map_shape\": \"4x7x7\", \"num_uavs\": 3, \"obstacle_density\": 0.12, \"seed\": 1, \"coverage_mean\": 0.9939017341040463, \"coverage_std\": 0.011034218795629226, \"pa_mean\": 0.033810112542829035, \"steps_mean\": 2340.1545, \"success_mean\": 0.611}",
+        "{\"method\": \"qmix\", \"map_shape\": \"4x7x7\", \"num_uavs\": 3, \"obstacle_density\": 0.12, \"seed\": 2, \"coverage_mean\": 0.9928786127167629, \"coverage_std\": 0.012467574301679165, \"pa_mean\": 0.03435701655449204, \"steps_mean\": 2328.3815, \"success_mean\": 0.592}",
+        "{\"method\": \"vdn\", \"map_shape\": \"4x7x7\", \"num_uavs\": 3, \"obstacle_density\": 0.12, \"seed\": 0, \"coverage_mean\": 0.9726473988439307, \"coverage_std\": 0.04540835908887821, \"pa_mean\": 0.027493978677411178, \"steps_mean\": 2714.2845, \"success_mean\": 0.411}",
+        "{\"method\": \"vdn\", \"map_shape\": \"4x7x7\", \"num_uavs\": 3, \"obstacle_density\": 0.12, \"seed\": 1, \"coverage_mean\": 0.981271676300578, \"coverage_std\": 0.03497630496757871, \"pa_mean\": 0.031059457257546882, \"steps_mean\": 2479.302, \"success_mean\": 0.5285}",
+        "{\"method\": \"vdn\", \"map_shape\": \"4x7x7\", \"num_uavs\": 3, \"obstacle_density\": 0.12, \"seed\": 2, \"coverage_mean\": 0.9753468208092486, \"coverage_std\": 0.04354975402010134, \"pa_mean\": 0.028824274749103273, \"steps_mean\": 2635.4095, \"success_mean\": 0.456}"
+      ]
+    },
+    "experiments/results/hard_qmix_only.jsonl": {
+      "line_count": 3,
+      "bytes": 747,
+      "lines": [
+        "{\"method\": \"qmix\", \"map_shape\": \"4x7x7\", \"num_uavs\": 3, \"obstacle_density\": 0.12, \"seed\": 0, \"coverage_mean\": 0.9934826589595375, \"coverage_std\": 0.01218028086180411, \"pa_mean\": 0.033783683376572934, \"steps_mean\": 2330.455, \"success_mean\": 0.601}",
+        "{\"method\": \"qmix\", \"map_shape\": \"4x7x7\", \"num_uavs\": 3, \"obstacle_density\": 0.12, \"seed\": 1, \"coverage_mean\": 0.9939017341040463, \"coverage_std\": 0.011034218795629226, \"pa_mean\": 0.033810112542829035, \"steps_mean\": 2340.1545, \"success_mean\": 0.611}",
+        "{\"method\": \"qmix\", \"map_shape\": \"4x7x7\", \"num_uavs\": 3, \"obstacle_density\": 0.12, \"seed\": 2, \"coverage_mean\": 0.9928786127167629, \"coverage_std\": 0.012467574301679165, \"pa_mean\": 0.03435701655449204, \"steps_mean\": 2328.3815, \"success_mean\": 0.592}"
+      ]
+    },
+    "experiments/results/ablation_medium.jsonl": {
+      "line_count": 3,
+      "bytes": 724,
+      "lines": [
+        "{\"method\": \"qmix\", \"map_shape\": \"3x6x6\", \"num_uavs\": 2, \"obstacle_density\": 0.08, \"seed\": 0, \"coverage_mean\": 0.8163700000000002, \"coverage_std\": 0.11288012712608009, \"pa_mean\": 0.01766469019489836, \"steps_mean\": 2432.713, \"success_mean\": 0.054}",
+        "{\"method\": \"qmix\", \"map_shape\": \"3x6x6\", \"num_uavs\": 2, \"obstacle_density\": 0.08, \"seed\": 1, \"coverage_mean\": 0.88248, \"coverage_std\": 0.08819721991083392, \"pa_mean\": 0.021443481127651952, \"steps_mean\": 2336.235, \"success_mean\": 0.1285}",
+        "{\"method\": \"qmix\", \"map_shape\": \"3x6x6\", \"num_uavs\": 2, \"obstacle_density\": 0.08, \"seed\": 2, \"coverage_mean\": 0.883165, \"coverage_std\": 0.08831836035049563, \"pa_mean\": 0.020527132484855083, \"steps_mean\": 2362.742, \"success_mean\": 0.1075}"
+      ]
+    },
+    "experiments/results/curve_aux.jsonl": {
+      "line_count": 1,
+      "bytes": 236,
+      "lines": [
+        "{\"method\": \"vdn\", \"map_shape\": \"3x6x6\", \"num_uavs\": 2, \"obstacle_density\": 0.08, \"seed\": 0, \"coverage_mean\": 0.67595, \"coverage_std\": 0.1823814615030815, \"pa_mean\": 0.014827599527980023, \"steps_mean\": 2435.254, \"success_mean\": 0.0495}"
+      ]
+    },
+    "experiments/results/hard_curve_aux.jsonl": {
+      "line_count": 2,
+      "bytes": 496,
+      "lines": [
+        "{\"method\": \"qmix\", \"map_shape\": \"4x7x7\", \"num_uavs\": 3, \"obstacle_density\": 0.12, \"seed\": 0, \"coverage_mean\": 0.9934826589595375, \"coverage_std\": 0.01218028086180411, \"pa_mean\": 0.033783683376572934, \"steps_mean\": 2330.455, \"success_mean\": 0.601}",
+        "{\"method\": \"vdn\", \"map_shape\": \"4x7x7\", \"num_uavs\": 3, \"obstacle_density\": 0.12, \"seed\": 0, \"coverage_mean\": 0.9726473988439307, \"coverage_std\": 0.04540835908887821, \"pa_mean\": 0.027493978677411178, \"steps_mean\": 2714.2845, \"success_mean\": 0.411}"
+      ]
+    },
+    "experiments/results/single_lines.jsonl": {
+      "line_count": 1,
+      "bytes": 236,
+      "lines": [
+        "{\"method\": \"qmix\", \"map_shape\": \"3x6x6\", \"num_uavs\": 2, \"obstacle_density\": 0.08, \"seed\": 0, \"coverage_mean\": 0.81987, \"coverage_std\": 0.1123707395187911, \"pa_mean\": 0.017739251878670096, \"steps_mean\": 2432.462, \"success_mean\": 0.056}"
+      ]
+    }
+  },
+  "curves_csv_index": {
+    "ablation_no_potential_s0.csv": {
+      "path_relative": "experiments/curves/ablation_no_potential_s0.csv",
+      "bytes": 60892
+    },
+    "ablation_no_potential_s1.csv": {
+      "path_relative": "experiments/curves/ablation_no_potential_s1.csv",
+      "bytes": 60816
+    },
+    "ablation_no_potential_s2.csv": {
+      "path_relative": "experiments/curves/ablation_no_potential_s2.csv",
+      "bytes": 60838
+    },
+    "qmix_hard_s0.csv": {
+      "path_relative": "experiments/curves/qmix_hard_s0.csv",
+      "bytes": 60606
+    },
+    "qmix_medium_s0.csv": {
+      "path_relative": "experiments/curves/qmix_medium_s0.csv",
+      "bytes": 60893
+    },
+    "vdn_hard_s0.csv": {
+      "path_relative": "experiments/curves/vdn_hard_s0.csv",
+      "bytes": 60723
+    },
+    "vdn_medium_episode.csv": {
+      "path_relative": "experiments/curves/vdn_medium_episode.csv",
+      "bytes": 60893
+    }
+  }
+}

@@ -1,0 +1,23 @@
+# VDN 基线：Q_tot = sum_i Q_i，无 hypernetwork 混合器
+mixer_type: vdn
+enable_potential_reward: true
+agent_hidden_dim: 64
+mixing_hidden_dim: 32
+hyper_hidden_dim: 64
+learning_rate: 0.0005
+buffer_size: 6000
+batch_size: 16
+bptt_detach_interval: 64
+min_buffer: 400
+episodes: 2000
+target_update_interval: 200
+gamma: 0.99
+grad_clip: 10.0
+epsilon_start: 1.0
+epsilon_end: 0.05
+epsilon_decay: 0.998
+epsilon_min: 0.05
+epsilon_plateaus: []
+log_interval: 50
+recovery:
+  enabled: false

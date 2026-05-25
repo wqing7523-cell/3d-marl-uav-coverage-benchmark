@@ -1,0 +1,1 @@
+{"method": "qmix", "map_shape": "3x6x6", "num_uavs": 2, "obstacle_density": 0.08, "seed": 0, "coverage_mean": 0.81987, "coverage_std": 0.1123707395187911, "pa_mean": 0.017739251878670096, "steps_mean": 2432.462, "success_mean": 0.056}

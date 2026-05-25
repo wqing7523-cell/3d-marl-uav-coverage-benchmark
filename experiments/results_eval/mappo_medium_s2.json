@@ -1,0 +1,18 @@
+{
+  "checkpoint": "C:\\Users\\44358\\Desktop\\uav-qmix-3d\\experiments\\checkpoints\\mappo3d_L3_H6_W6_uavs2_obs008_1778336904.pt",
+  "algorithm": "mappo",
+  "map_shape": [
+    3,
+    6,
+    6
+  ],
+  "num_uavs": 2,
+  "obstacle_density": 0.08,
+  "episodes": 50,
+  "seed": 2,
+  "stochastic": true,
+  "coverage_mean": 0.5861999999999999,
+  "coverage_std": 0.2283496441862785,
+  "steps_mean": 2500.0,
+  "success_mean": 0.0
+}

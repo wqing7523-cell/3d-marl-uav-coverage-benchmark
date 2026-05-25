@@ -1,0 +1,94 @@
+{
+  "tiers": [
+    {
+      "title": "Medium | grid_3d_medium | 3x6x6 | 2 UAV | obstacle_density 0.08",
+      "rows": [
+        {
+          "name": "QMIX",
+          "paths": [
+            "experiments/results_eval/qmix_medium_s0.json",
+            "experiments/results_eval/qmix_medium_s1.json",
+            "experiments/results_eval/qmix_medium_s2.json"
+          ]
+        },
+        {
+          "name": "VDN",
+          "paths": [
+            "experiments/results_eval/vdn_medium_s0.json",
+            "experiments/results_eval/vdn_medium_s1.json",
+            "experiments/results_eval/vdn_medium_s2.json"
+          ]
+        },
+        {
+          "name": "Greedy",
+          "paths": [
+            "experiments/results_eval/greedy_medium_s0.json",
+            "experiments/results_eval/greedy_medium_s1.json",
+            "experiments/results_eval/greedy_medium_s2.json"
+          ]
+        },
+        {
+          "name": "Random",
+          "paths": [
+            "experiments/results_eval/random_medium_s0.json",
+            "experiments/results_eval/random_medium_s1.json",
+            "experiments/results_eval/random_medium_s2.json"
+          ]
+        },
+        {
+          "name": "MAPPO",
+          "paths": [
+            "experiments/results_eval/mappo_medium_s0.json",
+            "experiments/results_eval/mappo_medium_s1.json",
+            "experiments/results_eval/mappo_medium_s2.json"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hard | grid_3d_hard | 4x7x7 | 3 UAV | obstacle_density 0.12",
+      "rows": [
+        {
+          "name": "QMIX",
+          "paths": [
+            "experiments/results_eval/qmix_hard_s0.json",
+            "experiments/results_eval/qmix_hard_s1.json",
+            "experiments/results_eval/qmix_hard_s2.json"
+          ]
+        },
+        {
+          "name": "VDN",
+          "paths": [
+            "experiments/results_eval/vdn_hard_s0.json",
+            "experiments/results_eval/vdn_hard_s1.json",
+            "experiments/results_eval/vdn_hard_s2.json"
+          ]
+        },
+        {
+          "name": "Greedy",
+          "paths": [
+            "experiments/results_eval/greedy_hard_s0.json",
+            "experiments/results_eval/greedy_hard_s1.json",
+            "experiments/results_eval/greedy_hard_s2.json"
+          ]
+        },
+        {
+          "name": "Random",
+          "paths": [
+            "experiments/results_eval/random_hard_s0.json",
+            "experiments/results_eval/random_hard_s1.json",
+            "experiments/results_eval/random_hard_s2.json"
+          ]
+        },
+        {
+          "name": "MAPPO",
+          "paths": [
+            "experiments/results_eval/mappo_hard_s0.json",
+            "experiments/results_eval/mappo_hard_s1.json",
+            "experiments/results_eval/mappo_hard_s2.json"
+          ]
+        }
+      ]
+    }
+  ]
+}

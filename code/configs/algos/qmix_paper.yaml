@@ -1,0 +1,25 @@
+# 论文实验建议配置（更长训练、更大缓冲）
+mixer_type: qmix
+enable_potential_reward: true
+agent_hidden_dim: 64
+mixing_hidden_dim: 32
+hyper_hidden_dim: 64
+learning_rate: 0.0005
+# 16GB 内存机器：过大 buffer + 2500 步轨迹易触发大量换页；可按机器再调
+buffer_size: 6000
+batch_size: 16
+# 每 K 步对 RNN hidden detach，截断 BPTT，显著加快长轨迹反传（略改梯度偏差，常用折中）
+bptt_detach_interval: 64
+min_buffer: 400
+episodes: 2000
+target_update_interval: 200
+gamma: 0.99
+grad_clip: 10.0
+epsilon_start: 1.0
+epsilon_end: 0.05
+epsilon_decay: 0.998
+epsilon_min: 0.05
+epsilon_plateaus: []
+log_interval: 50
+recovery:
+  enabled: false

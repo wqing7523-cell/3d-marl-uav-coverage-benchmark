@@ -1,0 +1,22 @@
+# 与 uav-qmix 同量级；可先减小 episodes 做冒烟
+mixer_type: qmix
+enable_potential_reward: true
+agent_hidden_dim: 64
+mixing_hidden_dim: 32
+hyper_hidden_dim: 64
+learning_rate: 0.0005
+buffer_size: 4000
+batch_size: 16
+min_buffer: 128
+episodes: 80
+target_update_interval: 100
+gamma: 0.99
+grad_clip: 10.0
+epsilon_start: 1.0
+epsilon_end: 0.05
+epsilon_decay: 0.995
+epsilon_min: 0.05
+epsilon_plateaus: []
+log_interval: 10
+recovery:
+  enabled: false

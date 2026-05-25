@@ -1,0 +1,9 @@
+# 小规模：先跑通训练（L×H×W = 2×5×5，2 架机）
+map_shape: [2, 5, 5]
+num_uavs: [2]
+obstacle_density: 0.05
+max_steps: 1200
+energy_budget: 3000
+shaping_weight: 10.0
+obstacle_shaping_weight: 2.0
+seed: 42

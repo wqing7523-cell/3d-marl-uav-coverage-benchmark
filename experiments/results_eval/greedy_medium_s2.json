@@ -1,0 +1,18 @@
+{
+  "policy": "greedy",
+  "checkpoint": null,
+  "mixer_type": "heuristic",
+  "map_shape": [
+    3,
+    6,
+    6
+  ],
+  "num_uavs": 2,
+  "obstacle_density": 0.08,
+  "episodes": 50,
+  "seed": 2,
+  "coverage_mean": 0.5336,
+  "coverage_std": 0.3647506545573291,
+  "steps_mean": 2060.88,
+  "success_mean": 0.18
+}

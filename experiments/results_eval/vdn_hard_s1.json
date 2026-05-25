@@ -1,0 +1,19 @@
+{
+  "checkpoint": "C:\\Users\\44358\\Desktop\\uav-qmix-3d\\experiments\\checkpoints\\vdn3d_L4_H7_W7_uavs3_obs012_1775284777.pt",
+  "mixer_type": "vdn",
+  "map_shape": [
+    4,
+    7,
+    7
+  ],
+  "num_uavs": 3,
+  "obstacle_density": 0.12,
+  "episodes": null,
+  "seed": 1,
+  "coverage_mean": 0.981271676300578,
+  "coverage_std": 0.03497630496757871,
+  "steps_mean": 2479.302,
+  "success_mean": 0.5285,
+  "metrics_source": "training_summary_jsonl",
+  "metrics_note": "Aligned with Table 3 / hard_qmix_vdn.jsonl. Replace with eval_3d.py --episodes 50 when checkpoints exist."
+}

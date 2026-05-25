@@ -1,0 +1,3 @@
+device: cuda
+log_dir: experiments/logs
+checkpoint_dir: experiments/checkpoints

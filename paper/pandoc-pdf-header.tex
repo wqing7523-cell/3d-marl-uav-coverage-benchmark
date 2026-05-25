@@ -1,0 +1,15 @@
+% Pandoc PDF tweaks for Chinese thesis draft
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{etoolbox}
+
+% Slightly smaller, tighter tables to avoid column overlap on A4
+\AtBeginEnvironment{longtable}{%
+  \small%
+  \setlength{\tabcolsep}{4pt}%
+  \renewcommand{\arraystretch}{1.15}%
+}
+
+% Allow line breaks in longtable paragraph columns (pandoc default)
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
