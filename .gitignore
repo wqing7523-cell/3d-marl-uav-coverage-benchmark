@@ -1,0 +1,22 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local publish staging
+_github_publish/
+_github_clone/
+
+# Large duplicate archive (folder is canonical)
+*.zip
+
+# Logs (optional local only)
+*.log
