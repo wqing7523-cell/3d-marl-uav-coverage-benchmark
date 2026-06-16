@@ -1,0 +1,20 @@
+{
+  "checkpoint": "C:\\Users\\44358\\Desktop\\uav-qmix-3d\\experiments\\checkpoints\\qmix3d_L3_H6_W6_uavs2_obs008_1778068048.pt",
+  "mixer_type": "qmix",
+  "map_shape": [
+    3,
+    6,
+    6
+  ],
+  "num_uavs": 2,
+  "obstacle_density": 0.08,
+  "episodes": 50,
+  "seed": 0,
+  "coverage_mean": 0.27820000000000006,
+  "coverage_std": 0.11176206869953688,
+  "steps_mean": 2500.0,
+  "success_mean": 0.0,
+  "truncated_fraction": 1.0,
+  "remaining_free_ratio_mean": 0.7218000000000003,
+  "metrics_source": "eval_3d.py"
+}

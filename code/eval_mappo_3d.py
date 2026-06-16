@@ -16,7 +16,7 @@ import numpy as np
 import torch
 from torch.distributions import Categorical
 
-from src.algos.mappo.networks import CentralCritic, MultiAgentActor
+from src.algos.mappo.networks import CentralCritic, LegacySharedActor, MultiAgentActor
 from src.envs.grid_world_3d import GridWorld3DEnv
 from src.metrics.metrics import EpisodeStats, aggregate_episode_stats
 from src.utils.config import load_config
@@ -52,10 +52,6 @@ def main() -> None:
     map_shape = tuple(int(x) for x in ckpt["map_shape"])
     num_uavs = int(ckpt["num_uavs"])
     obstacle_density = float(ckpt["obstacle_density"])
-    obs_dim = int(ckpt["obs_dim"])
-    num_actions = int(ckpt["num_actions"])
-    hidden_dim = int(ckpt.get("hidden_dim", 128))
-
     env = GridWorld3DEnv(
         map_shape=map_shape,
         num_uavs=num_uavs,
@@ -67,20 +63,31 @@ def main() -> None:
         seed=env_cfg.get("seed", args.seed),
     )
 
+    obs_dim = int(ckpt.get("obs_dim", env.observation_space.shape[0]))
+    num_actions = int(ckpt.get("num_actions", env.action_space.nvec[0]))
+    hidden_dim = int(ckpt.get("hidden_dim", 128))
+
     if int(env.observation_space.shape[0]) != obs_dim:
         raise ValueError(
             f"Checkpoint obs_dim {obs_dim} != env {env.observation_space.shape[0]}"
         )
 
-    actor = MultiAgentActor(obs_dim, num_uavs, num_actions, hidden_dim).to(device)
+    actor_sd = ckpt["actor"]
+    if any(str(k).startswith("net.") for k in actor_sd):
+        if "num_actions" not in ckpt or ckpt["num_actions"] is None:
+            num_actions = int(actor_sd["net.4.weight"].shape[0])
+        actor = LegacySharedActor(obs_dim, num_uavs, num_actions, hidden_dim).to(device)
+    else:
+        actor = MultiAgentActor(obs_dim, num_uavs, num_actions, hidden_dim).to(device)
     critic = CentralCritic(obs_dim, hidden_dim).to(device)
-    actor.load_state_dict(ckpt["actor"])
+    actor.load_state_dict(actor_sd)
     critic.load_state_dict(ckpt["critic"])
     actor.eval()
     critic.eval()
 
     set_seed(args.seed)
     stats_list: List[EpisodeStats] = []
+    termination_rows: List[dict] = []
 
     for ep in range(1, args.episodes + 1):
         obs, info = env.reset(seed=args.seed + ep)
@@ -119,10 +126,24 @@ def main() -> None:
 
         cov = float(step_info.get("coverage", 0.0))
         st.success = bool(terminated and cov >= 0.99)
+        valid_cells = int(step_info.get("valid_cells", st.total_cells) or st.total_cells or 1)
+        remaining = int(step_info.get("remaining_free_cells", 0))
+        termination_rows.append(
+            {
+                "terminated": bool(terminated),
+                "truncated": bool(truncated),
+                "success": bool(st.success),
+                "remaining_free_ratio": remaining / max(1, valid_cells),
+                "coverage_end": cov,
+            }
+        )
         st.end_time = time.time()
         stats_list.append(st)
 
     summary = aggregate_episode_stats(stats_list)
+    n_eps = max(1, len(termination_rows))
+    truncated_frac = sum(r["truncated"] for r in termination_rows) / n_eps
+    remaining_ratio_mean = sum(r["remaining_free_ratio"] for r in termination_rows) / n_eps
     out = {
         "checkpoint": str(Path(args.checkpoint).resolve()),
         "algorithm": "mappo",
@@ -136,6 +157,9 @@ def main() -> None:
         "coverage_std": summary.get("coverage_std", 0.0),
         "steps_mean": summary.get("steps_mean", 0.0),
         "success_mean": summary.get("success_mean", 0.0),
+        "truncated_fraction": float(truncated_frac),
+        "remaining_free_ratio_mean": float(remaining_ratio_mean),
+        "metrics_source": "eval_mappo_3d.py",
     }
     print(json.dumps(out, ensure_ascii=False, indent=2))
     if args.output_json:

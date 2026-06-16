@@ -1,8 +1,13 @@
 % Pandoc PDF tweaks for Chinese thesis draft
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{array}
-\usepackage{etoolbox}
+\usepackage{float}
+\usepackage{graphicx}
+\floatplacement{figure}{H}
+\renewcommand{\figurename}{图}
 
 % Slightly smaller, tighter tables to avoid column overlap on A4
 \AtBeginEnvironment{longtable}{%

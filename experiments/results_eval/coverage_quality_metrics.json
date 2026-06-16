@@ -1,0 +1,110 @@
+{
+  "medium": {
+    "random": {
+      "revisit_mean": 1317.72,
+      "revisit_std": 13.22294974655809,
+      "overlap_mean": 11.426666666666668,
+      "overlap_std": 0.5326662494783508,
+      "efficiency_mean": 0.1566177600992824,
+      "efficiency_std": 0.004187648873032036,
+      "coverage_mean": 1.0,
+      "coverage_std": 0.0,
+      "steps_mean": 707.86,
+      "steps_std": 6.611474873279045,
+      "success_mean": 1.0,
+      "success_std": 0.0
+    },
+    "greedy": {
+      "revisit_mean": 4069.4933333333333,
+      "revisit_std": 0.8055639846302649,
+      "overlap_mean": 3012.8799999999997,
+      "overlap_std": 57.74685445978853,
+      "efficiency_mean": 0.32016359173929465,
+      "efficiency_std": 0.00032222559385213005,
+      "coverage_mean": 0.5426666666666665,
+      "coverage_std": 0.008055639846302294,
+      "steps_mean": 2060.88,
+      "steps_std": 0.0,
+      "success_mean": 0.18000000000000002,
+      "success_std": 3.3993498887762956e-17
+    },
+    "qmix": {
+      "revisit_mean": 4656.153700725357,
+      "revisit_std": 108.78742092250269,
+      "overlap_mean": 0.0,
+      "overlap_std": 0.0,
+      "efficiency_mean": 0.03635735248406332,
+      "efficiency_std": 0.0022968771038726662,
+      "coverage_mean": 0.8628966666666668,
+      "steps_mean": 2375.4491666666668,
+      "success_mean": 0.09933333333333333,
+      "note": "QMIX/VDN revisit estimated as (1-pa_mean)*steps*num_uavs from training jsonl"
+    },
+    "vdn": {
+      "revisit_mean": 4680.912838535905,
+      "revisit_std": 106.00202287868092,
+      "overlap_mean": 0.0,
+      "overlap_std": 0.0,
+      "efficiency_mean": 0.02970060938772963,
+      "efficiency_std": 0.001712828511319088,
+      "coverage_mean": 0.7064650000000001,
+      "steps_mean": 2380.3145,
+      "success_mean": 0.09183333333333332,
+      "note": "QMIX/VDN revisit estimated as (1-pa_mean)*steps*num_uavs from training jsonl"
+    }
+  },
+  "hard": {
+    "random": {
+      "revisit_mean": 2980.0733333333337,
+      "revisit_std": 94.16123476958727,
+      "overlap_mean": 28.900000000000002,
+      "overlap_std": 0.45825756949558316,
+      "efficiency_mean": 0.18535077809798697,
+      "efficiency_std": 0.003266847590338995,
+      "coverage_mean": 0.9999229287090557,
+      "coverage_std": 6.674569586015243e-05,
+      "steps_mean": 1050.02,
+      "steps_std": 31.383581694892573,
+      "success_mean": 0.9866666666666667,
+      "success_std": 0.011547005383792525
+    },
+    "greedy": {
+      "revisit_mean": 10021.666666666666,
+      "revisit_std": 0.13012814197216027,
+      "overlap_mean": 7317.206666666666,
+      "overlap_std": 0.13012814197306885,
+      "efficiency_mean": 0.0821315088927137,
+      "efficiency_std": 3.717946913512633e-05,
+      "coverage_mean": 0.4415799614643546,
+      "coverage_std": 0.0007521857917512228,
+      "steps_mean": 3365.02,
+      "steps_std": 0.0,
+      "success_mean": 0.04,
+      "success_std": 0.0
+    },
+    "qmix": {
+      "revisit_mean": 6830.677109869075,
+      "revisit_std": 101.73477450546252,
+      "overlap_mean": 0.0,
+      "overlap_std": 0.0,
+      "efficiency_mean": 0.07291370225385481,
+      "efficiency_std": 0.0010972110059474856,
+      "coverage_mean": 0.9929075144508671,
+      "steps_mean": 2356.2490000000003,
+      "success_mean": 0.5878,
+      "note": "QMIX/VDN revisit estimated as (1-pa_mean)*steps*num_uavs from training jsonl"
+    },
+    "vdn": {
+      "revisit_mean": 7410.589810417732,
+      "revisit_std": 367.7117917543889,
+      "overlap_mean": 0.0,
+      "overlap_std": 0.0,
+      "efficiency_mean": 0.06658772474549658,
+      "efficiency_std": 0.0033768234609219488,
+      "coverage_mean": 0.9783098265895953,
+      "steps_mean": 2546.6503000000002,
+      "success_mean": 0.49820000000000003,
+      "note": "QMIX/VDN revisit estimated as (1-pa_mean)*steps*num_uavs from training jsonl"
+    }
+  }
+}

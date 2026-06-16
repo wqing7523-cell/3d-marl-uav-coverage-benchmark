@@ -1,5 +1,5 @@
 {
-  "checkpoint": "C:\\Users\\44358\\Desktop\\uav-qmix-3d\\experiments\\checkpoints\\qmix3d_L4_H7_W7_uavs3_obs012_1775082129.pt",
+  "checkpoint": null,
   "mixer_type": "qmix",
   "map_shape": [
     4,
@@ -15,5 +15,5 @@
   "steps_mean": 2330.455,
   "success_mean": 0.601,
   "metrics_source": "training_summary_jsonl",
-  "metrics_note": "Aligned with Table 3 / hard_qmix_vdn.jsonl. Replace with eval_3d.py --episodes 50 when checkpoints exist."
+  "metrics_note": "C6 n=5 extension; same training-end aggregate as Table 3 (not greedy eval_3d.py)."
 }

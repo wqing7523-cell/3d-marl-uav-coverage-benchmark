@@ -94,6 +94,7 @@ def main() -> None:
 
     set_seed(args.seed)
     stats_list: List[EpisodeStats] = []
+    termination_rows: List[dict] = []
 
     for ep in range(1, args.episodes + 1):
         obs, info = env.reset(seed=args.seed + ep)
@@ -120,10 +121,25 @@ def main() -> None:
                     st.new_cell_actions += 1
                     st.per_uav_new_cells[idx] += 1
         st.end_time = time.time()
-        st.success = bool(done and step_info.get("coverage", 0.0) >= 0.99)
+        cov_end = float(step_info.get("coverage", 0.0))
+        st.success = bool(done and cov_end >= 0.99)
+        valid_cells = int(step_info.get("valid_cells", st.total_cells) or st.total_cells or 1)
+        remaining = int(step_info.get("remaining_free_cells", 0))
+        termination_rows.append(
+            {
+                "terminated": bool(done),
+                "truncated": bool(truncated),
+                "success": bool(st.success),
+                "remaining_free_ratio": remaining / max(1, valid_cells),
+                "coverage_end": cov_end,
+            }
+        )
         stats_list.append(st)
 
     summary = aggregate_episode_stats(stats_list)
+    n_eps = max(1, len(termination_rows))
+    truncated_frac = sum(r["truncated"] for r in termination_rows) / n_eps
+    remaining_ratio_mean = sum(r["remaining_free_ratio"] for r in termination_rows) / n_eps
     out = {
         "checkpoint": str(Path(args.checkpoint).resolve()),
         "mixer_type": mixer_type,
@@ -136,6 +152,9 @@ def main() -> None:
         "coverage_std": summary.get("coverage_std", 0.0),
         "steps_mean": summary.get("steps_mean", 0.0),
         "success_mean": summary.get("success_mean", 0.0),
+        "truncated_fraction": float(truncated_frac),
+        "remaining_free_ratio_mean": float(remaining_ratio_mean),
+        "metrics_source": "eval_3d.py",
     }
     print(json.dumps(out, ensure_ascii=False, indent=2))
     if args.output_json:

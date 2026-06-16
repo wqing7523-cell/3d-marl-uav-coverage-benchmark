@@ -85,10 +85,13 @@ python experiments/aggregate_eval_table.py --spec experiments/aggregate_dual_spe
 | 图4–5 Random 轨迹 | `experiments/plot_voxel_rollout_figures.py` |
 | 图6 $\rho$ 扫参（启发式） | `experiments/generate_sensors_paper_figures.py` |
 | 图7 消融 | `experiments/plot_potential_ablation.py` |
+| 表 7 覆盖质量 | `experiments/compute_coverage_quality_metrics.py` |
+| 表 12–14 探索性统计 | `experiments/stats_bootstrap_ci.py` → `paper/appendix_stats_table_d.md` |
+| 表 15（$n=5$ Hard） | `paper/appendix_stats_table_e_n5_hard.md` |
 
 ---
 
-## 6. Sim-to-Real 参考（论文第5.2节方向）
+## 6. Sim-to-Real 参考（论文第6.3节方向）
 
 本备份提供**离散体素仿真基准与 MARL 管线**，不含真实飞控接口。迁移研究可：
 
@@ -96,11 +99,23 @@ python experiments/aggregate_eval_table.py --spec experiments/aggregate_dual_spe
 2. 将观测从体素向量替换为噪声点云/深度图，动作为连续控制时用蒸馏或微调；
 3. 在真实机上做域随机化（障碍布局、感知噪声、动力学约束）。
 
-相关讨论见 `paper/沁言学术.md` 第5.2节。
+相关讨论见 `paper/沁言学术.md` 第 6.3 节。
 
 ---
 
-## 7. 重新生成本备份
+## 7. 发布到 GitHub
+
+在开发仓库根目录执行：
+
+```bash
+python tools/publish_to_github.py
+```
+
+脚本会：（1）同步 `lunwen/沁言学术.*` 到 `paper/`；（2）生成 `_github_publish/`；（3）克隆远程仓库、覆盖并 `git push`。需已配置 Git 凭据。
+
+---
+
+## 8. 重新生成本备份
 
 在仓库根目录执行：
 
@@ -110,6 +125,6 @@ python tools/create_reproducibility_backup.py --out "C:\Users\44358\Desktop\lunw
 
 ---
 
-## 8. 引用与许可
+## 9. 引用与许可
 
 若公开发布代码，请与论文作者确认仓库许可；备份仅用于个人归档与复现，不等同于正式开源发布。

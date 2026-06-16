@@ -5,6 +5,31 @@ import torch
 from torch import nn
 
 
+class LegacySharedActor(nn.Module):
+    """Older checkpoint format: shared MLP, identical logits broadcast to all agents."""
+
+    def __init__(
+        self,
+        obs_dim: int,
+        num_agents: int,
+        num_actions: int,
+        hidden_dim: int = 128,
+    ) -> None:
+        super().__init__()
+        self.num_agents = num_agents
+        self.net = nn.Sequential(
+            nn.Linear(obs_dim, hidden_dim),
+            nn.Tanh(),
+            nn.Linear(hidden_dim, hidden_dim),
+            nn.Tanh(),
+            nn.Linear(hidden_dim, num_actions),
+        )
+
+    def forward(self, obs: torch.Tensor) -> torch.Tensor:
+        logits = self.net(obs).unsqueeze(1)
+        return logits.expand(-1, self.num_agents, -1)
+
+
 class MultiAgentActor(nn.Module):
     """Shared encoder + per-agent discrete policy heads (breaks action symmetry)."""
 

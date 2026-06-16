@@ -1,0 +1,6 @@
+{
+  "qmix_s3": "C:\\Users\\44358\\Desktop\\uav-qmix-3d\\experiments\\checkpoints\\qmix3d_L4_H7_W7_uavs3_obs012_1780352678.pt",
+  "qmix_s4": "C:\\Users\\44358\\Desktop\\uav-qmix-3d\\experiments\\checkpoints\\qmix3d_L4_H7_W7_uavs3_obs012_1780437641.pt",
+  "vdn_s3": "C:\\Users\\44358\\Desktop\\uav-qmix-3d\\experiments\\checkpoints\\vdn3d_L4_H7_W7_uavs3_obs012_1780499159.pt",
+  "vdn_s4": "C:\\Users\\44358\\Desktop\\uav-qmix-3d\\experiments\\checkpoints\\vdn3d_L4_H7_W7_uavs3_obs012_1780536048.pt"
+}

@@ -1,0 +1,19 @@
+{
+  "checkpoint": "C:\\Users\\44358\\Desktop\\uav-qmix-3d\\experiments\\checkpoints\\qmix3d_L4_H7_W7_uavs3_obs012_1780352678.pt",
+  "mixer_type": "qmix",
+  "map_shape": [
+    4,
+    7,
+    7
+  ],
+  "num_uavs": 3,
+  "obstacle_density": 0.12,
+  "episodes": null,
+  "seed": 3,
+  "coverage_mean": 0.9926560693641618,
+  "coverage_std": 0.012333057414483534,
+  "steps_mean": 2375.448,
+  "success_mean": 0.5785,
+  "metrics_source": "training_summary_jsonl",
+  "metrics_note": "C6 n=5 extension; same training-end aggregate as Table 3 (not greedy eval_3d.py)."
+}
